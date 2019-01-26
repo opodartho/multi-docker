@@ -1,6 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefinitaions": [
+    "containerDefinitions": [
         {
             "name": "client",
             "image": "opodartho/multi-client",
