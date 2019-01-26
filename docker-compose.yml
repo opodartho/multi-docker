@@ -14,7 +14,7 @@ services:
     ports:
       - '3030:80'
 
-  server:
+  api:
     build:
       dockerfile: Dockerfile.dev
       context: './server/'

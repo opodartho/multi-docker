@@ -20,3 +20,16 @@ after_success:
   - docker push opodartho/multi-server
   - docker push opodartho/multi-worker
   - docker push opodartho/multi-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-596850887437
+  bucket_path: docker-multi
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: $AWS_SECRET_KEY
