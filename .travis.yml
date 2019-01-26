@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t opodartho/client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run opodartho/client-test npm test -- --coverage
+
+after_success:
+  - docker build -t opodartho/multi-client ./client
+  - docker build -t opodartho/multi-server ./server
+  - docker build -t opodartho/multi-worker ./worker
+  - docker build -t opodartho/multi-nginx ./nginx
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push this to docker hub
+  - docker push opodartho/multi-client
+  - docker push opodartho/multi-server
+  - docker push opodartho/multi-worker
+  - docker push opodartho/multi-nginx
