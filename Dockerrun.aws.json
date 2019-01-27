@@ -5,23 +5,27 @@
             "name": "client",
             "image": "opodartho/multi-client",
             "hostname": "client",
+            "memory": 128,
             "essentials": false
         },
         {
             "name": "server",
             "image": "opodartho/multi-server",
             "hostname": "api",
+            "memory": 128,
             "essentials": false
         },
         {
             "name": "worker",
             "image": "opodartho/multi-worker",
             "hostname": "worker",
+            "memory": 128,
             "essentials": false
         },
         {
             "name": "nginx",
             "image": "opodartho/multi-nginx",
+            "memory": 128,
             "essentials": true,
             "portMappings": [
                 {
